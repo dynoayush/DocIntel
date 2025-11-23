@@ -21,3 +21,5 @@ DocIntel is a Python-based tool that automatically:
 
 - Stores results in a **SQLite database** and displays them in a table with timestamp. 
 - Simple **Streamlit web interface** – upload → process → view structured data 
+
+# Here is the working link: https://docintel-hackthon.streamlit.app/
