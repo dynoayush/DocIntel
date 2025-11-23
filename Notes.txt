@@ -1,0 +1,31 @@
+Architecture:
+Streamlit UI → Upload Document → OCR (Tesseract) → Classification → Field Extraction (Regex) → Store in SQLite → Display Results on UI
+
+
+What all used here?
+Frontend -  Streamlit
+Optical character recognition - Tesseract OCR (via pytesseract)
+PDF processing - pdf2image + poppler (converts pdfs into images for OCR)
+Image Handling - pillow (PIL) [opens and preprocess image files]
+Backend(document_processor.py) - includes logic of classification, extraction, processing.
+Database - SQLlite 3 (stores result in a structured format)
+
+
+Why I used these?
+Python: supports ocr, databases and ui under a single language.
+Tesseract OCR: its free, can be used offline.
+pdf2image + Poppler: Simple integration in Python.
+Regex(regular expression) for Field Extraction: fast, lightweight, no need to train the ml models, high accuracy on ID documents
+SQL Lite Database: No server setup
+Streamlit - no need for html, css, javascript
+
+
+document_processor.py file - 
+Reads the document (PDF or image)
+If PDF → converts it to an image
+Uses Tesseract OCR to extract text
+Identifies document type based on text
+Extracts key fields using regular expressions
+Saves results (file name, type, extracted data) in SQLite
+Returns the result to the Streamlit UI
+
